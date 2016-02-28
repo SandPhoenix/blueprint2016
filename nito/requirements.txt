@@ -1,0 +1,16 @@
+colorama==0.3.6
+decorator==4.0.9
+dj-database-url==0.4.0
+Django==1.9.2
+gunicorn==19.4.5
+lxml==3.4.4
+mercurial==3.7.1
+pathlib==1.0.1
+psutil==4.0.0
+Python-OOXML==0.12
+six==1.10.0
+thefuck==3.3
+vboxapi==1.0
+virtualenv==14.0.6
+wheel==0.26.0
+whitenoise==2.0.6
