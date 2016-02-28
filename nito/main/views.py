@@ -1,6 +1,7 @@
 from django.shortcuts import render,get_object_or_404
 from main.models import Post,User
 from django.http import HttpResponse,HttpResponseRedirect
+from django.core.urlresolvers import reverse
 import random
 import hashlib
 
@@ -26,7 +27,7 @@ def login(request):
 		hash_name = hashlib.sha512(request.POST['login']).hexdigest()
 		for u in User.objects.all():
 			if u.hash_name == hash_name:
-				response = HttpResponseRedirect(reverse('blog:index'))
+				response = HttpResponseRedirect(reverse('main:index'))
 				response.set_cookie('login',request.POST['login'])
 				return render(request,'main/submitpost.html',{})
 		else:
