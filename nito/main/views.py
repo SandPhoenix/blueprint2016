@@ -8,22 +8,26 @@ import hashlib
 def index(request):
 	u = checkCookies(request)
 	if u  == False:
-		return render(request,'main/')
+		return login(request)
 	else:
 		context = {'user' : u}
 		return render(request,'main/index.html',context)
 
 def signup(request):
 	if request.POST.has_key('login'):
+		new_user = User()
+		new_user.setName(request.POST['login'])
+		new_user.save()
+		return randompost(request)
+
+def login(request):
+	if request.POST.has_key('login'):
 		hash_name = hashlib.sha512(request.POST['login']).hexdigest()
 		for u in User.objects.all():
 			if u.hash_name == hash_name:
-				return error(request,"The username is aready taken.")
+				return render(request,'main/index.html',{})
 		else:
-			new_user = User()
-			new_user.setName(request.POST['login'])
-			new_user.save()
-			return randompost(request)
+			return signup(request)
 	else:
 		return error(request,"Missing Parameter")
 
