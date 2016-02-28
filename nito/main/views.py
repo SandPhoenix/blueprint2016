@@ -32,7 +32,7 @@ def login(request):
 		else:
 			return signup(request)
 	else:
-		return error(request,"Missing Parameter")
+		return signup(request)
 
 def randompost(request):
 	if checkCookies(request) != False:
