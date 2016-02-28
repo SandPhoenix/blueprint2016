@@ -51,6 +51,7 @@ def randompost(request):
 		if len(posts) > 0:
 			p = posts[random.randint(0,len(posts)-1)]
 			context = {'post':p}
+			print >>sys.stderr,"fuckfuckfuck {}".format(p)
 		return render(request,'main/randompost.html',context)
 	else:
 		return error(request,"Not Authorized")
@@ -67,6 +68,10 @@ def submitpost(request):
 			#	print >>sys.stderr, "ADDING POST TO FEED"
 			#	follower.feed.post_set.add(post)
 			return randompost(request)
+		else:
+			return error(request,"I don't even know")
+	else:
+		return error(request,"I don't even know")
 
 def error(request,string):
 	context = {'string' : string }
