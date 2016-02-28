@@ -29,7 +29,7 @@ def login(request):
 			if u.hash_name == hash_name:
 				response = HttpResponseRedirect(reverse('main:index'))
 				response.set_cookie('login',request.POST['login'])
-				return render(request,'main/submitpost.html',{})
+				return response
 		else:
 			return render(request,'main/index.html',{})
 	else:
