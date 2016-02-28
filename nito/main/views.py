@@ -4,14 +4,17 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.core.urlresolvers import reverse
 import random
 import hashlib
+import sys
 
 # Create your views here.
 
 def index(request):
+	print >>sys.stderr,"WHAT THE FUCK"
 	u = checkCookies(request)
 	if u == False:
 		return login(request)
 	else:
+		print >>sys.stderr,"SUBMIT POST"
 		context = {'user' : u}
 		return render(request,'main/submitpost.html',context)
 
@@ -48,16 +51,14 @@ def randompost(request):
 
 def submitpost(request):
 	u = checkCookies(request)
+	print >>sys.stderr,'FUCKING HELL {}'.format(u)
 	if u != False:
 		#if request.POST.has_key('content'):
 			post = Post()
 			post.setContent(request.POST['content'])
 			post.author = u
 			post.save()
-			return render(request,'main/randompost.html',context)
-
-
-
+			return randompost(request)
 
 def error(request,string):
 	context = {'string' : string }
