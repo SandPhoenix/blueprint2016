@@ -18,7 +18,13 @@ class User(models.Model):
 
 class Post(models.Model):
 	content = models.CharField(max_length=140)
+	hash_content = models.CharField(max_length=32,default="none")
 	author = models.ForeignKey(User)
+	
+	def setContent(self,text):
+		self.content = text
+		self.hash_content = hashlib.sha512(text).hexdigest()
+		self.save()
 	def __unicode__(self):
 		return self.content
 
