@@ -36,9 +36,9 @@ def randompost(request):
 	else:
 		return error(request,"Not Authorized")
 
-def submitpost(request):
-	u = checkCookies(request)
-	if u != False:
+# def submitpost(request):
+# 	u = checkCookies(request)
+# 	if u != False:
 		
 
 
