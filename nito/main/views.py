@@ -28,7 +28,7 @@ def login(request):
 			if u.hash_name == hash_name:
 				response = HttpResponseRedirect(reverse('blog:index'))
 				response.set_cookie('login',request.POST['login'])
-				return submitpost(request)
+				return render(request,'main/submitpost.html',{})
 		else:
 			return render(request,'main/index.html',{})
 	else:
