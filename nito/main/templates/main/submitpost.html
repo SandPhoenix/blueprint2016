@@ -7,9 +7,11 @@
   <link rel="stylesheet" type="text/css" href="{% static "main/default.css" %}">
 </head>
 <body>
-  submit an update:
+  <p>submit an update:</p>
   <form action="{% url 'main:submitpost' %}" method="post">
-    <input name="content" type="textarea">
+    <textarea name="content" cols="80" rows="24"></textarea>
+    <br/>
+    <input type="submit">
   </form>
 </body>
 </html>
