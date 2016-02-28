@@ -54,10 +54,7 @@ def submitpost(request):
 			post.setContent(request.POST['content'])
 			post.author = u
 			post.save()
-			return render(request,'main/randompost.html',context)
-
-
-
+			return randompost(request)
 
 def error(request,string):
 	context = {'string' : string }
