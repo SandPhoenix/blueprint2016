@@ -30,9 +30,9 @@ def login(request):
 				response.set_cookie('login',request.POST['login'])
 				return render(request,'main/index.html',{})
 		else:
-			return signup(request)
+			return render(request,'main/index.html',{})
 	else:
-		return signup(request)
+		return render(request,'main/index.html',{})
 
 def randompost(request):
 	if checkCookies(request) != False:
