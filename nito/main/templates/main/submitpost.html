@@ -10,7 +10,7 @@
   <h1>submit an update:</h1>
   <form action="{% url 'main:submitpost' %}" method="post">
     {% csrf_token %}
-    <textarea name="content" cols="64" rows="8"></textarea>
+    <textarea id="post" name="content" cols="64" rows="8"></textarea>
     <br/>
     <input type="submit">
   </form>

@@ -1,5 +1,61 @@
-h1, h2, p, input, form {
-    text-align: center;
+@font-face { font-family: triplicater; src: url('triplicate_t4_regular-webfont.woff'); }
+
+@font-face { font-family: triplicatei; src: url('triplicate_t4_italic-webfont.woff'); }
+
+@font-face { font-family: triplicateb; src: url('triplicate_t4_bold-webfont.woff'); }
+
+@font-face { font-family: triplicatebi; src: url('triplicate_t4_bold_italic-webfont.woff'); }
+
+@font-face { font-family: triplicatecr; src: url('triplicate_c4_regular-webfont.woff'); }
+
+@font-face { font-family: triplicatecb; src: url('triplicate_c4_bold-webfont.woff'); }
+
+body {
+  background-color: #A1A8AB;
+}
+
+h1 {
+  font-family: triplicateb;
+  text-align: center;
+}
+
+#title {
+  font-family: triplicatecr;
+  font-size: 40px;
+}
+
+#name {
+  font-family: triplicatei;
+  font-size: 20px;
+  text-align: center;
+}
+
+#post {
+  font-family: triplicater;
+  font-size: 18px;
+}
+
+#submitpost {
+  font-family: triplicater;
+}
+
+h2 {
+  font-family: triplicatecr;
+  text-align: center;
+}
+
+p {
+  font-family: triplicatecb;
+  font-size: 30px;
+  text-align: center;
+}
+
+input {
+  text-align: center;
+}
+
+form {
+  text-align: center;
 }
 
 textarea {
