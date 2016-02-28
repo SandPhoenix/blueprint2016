@@ -62,11 +62,10 @@ def submitpost(request):
 		if request.POST.has_key('content'):
 			post = Post(author=u)
 			post.setContent(request.POST['content'])
-			# post.author = u
 			post.save()
-			for follower in u.is_followed.all():
-				print >>sys.stderr, "ADDING POST TO FEED"
-				follower.feed.post_set.add(post)
+			#for follower in u.is_followed.all():
+			#	print >>sys.stderr, "ADDING POST TO FEED"
+			#	follower.feed.post_set.add(post)
 			return randompost(request)
 
 def error(request,string):
