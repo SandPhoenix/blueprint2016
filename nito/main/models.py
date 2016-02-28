@@ -13,6 +13,9 @@ class User(models.Model):
 	user_follows = models.ManyToManyField('self', related_name='follows', symmetrical=False)
 	follows_user = models.ManyToManyField('self', related_name='is_followed', symmetrical=False)
 
+	def follow(u):
+		for post in u.post_set.all():
+			self.feed_set.all()[0].post_set.add(post)
 
 	def __unicode__(self):
 		return self.hash_name
