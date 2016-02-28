@@ -8,7 +8,7 @@ import hashlib
 def index(request):
 	u = checkCookies(request)
 	if u  == False:
-		return signup(request)
+		return render(request,'main/')
 	else:
 		context = {'user' : u}
 		return render(request,'main/index.html',context)
@@ -39,7 +39,7 @@ def randompost(request):
 # def submitpost(request):
 # 	u = checkCookies(request)
 # 	if u != False:
-		
+
 
 
 def error(request,string):
