@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-  <title>submit</title>
+  <title>feed</title>
   {% load staticfiles %}
   <link rel="stylesheet" type="text/css" href="{% static "main/default.css" %}">
 </head>
 <body>
-  <p>submit an update:</p>
+  <h1>submit an update:</h1>
   <form action="{% url 'main:submitpost' %}" method="post">
     {% csrf_token %}
-    <textarea name="content" cols="80" rows="10"></textarea>
+    <textarea name="content" cols="64" rows="8"></textarea>
     <br/>
     <input type="submit">
   </form>
+  <h2>feed</h2>
 </body>
 </html>
