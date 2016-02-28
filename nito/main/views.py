@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_object_or_404
-from main.models import Post,User
+from main.models import Post,User,Feed
 from django.http import HttpResponse,HttpResponseRedirect
 from django.core.urlresolvers import reverse
 import random
@@ -16,13 +16,17 @@ def index(request):
 	else:
 		print >>sys.stderr,"SUBMIT POST"
 		context = {'user' : u}
+		print >>sys.stderr,"FEED POSTS {}".format(u.feed_set.all()[0].post_set.all())
 		return render(request,'main/submitpost.html',context)
 
 def signup(request):
 	if request.POST.has_key('login'):
 		new_user = User()
 		new_user.setName(request.POST['login'])
+		feed = Feed()
+		feed.parent = new_user
 		new_user.save()
+		feed.save()
 		response = HttpResponseRedirect(reverse('main:randompost'))
 		response.set_cookie('login',request.POST['login'])
 		return response
@@ -43,8 +47,10 @@ def login(request):
 def randompost(request):
 	if checkCookies(request) != False:
 		posts = Post.objects.all()
-		p = posts[random.randint(0,len(posts))]
-		context = {'post':p}
+		context = {}
+		if len(posts) > 0:
+			p = posts[random.randint(0,len(posts)-1)]
+			context = {'post':p}
 		return render(request,'main/randompost.html',context)
 	else:
 		return error(request,"Not Authorized")
@@ -58,6 +64,9 @@ def submitpost(request):
 			post.setContent(request.POST['content'])
 			# post.author = u
 			post.save()
+			for follower in u.is_followed.all():
+				print >>sys.stderr, "ADDING POST TO FEED"
+				follower.feed.post_set.add(post)
 			return randompost(request)
 
 def error(request,string):
