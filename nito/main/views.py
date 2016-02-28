@@ -60,4 +60,3 @@ def checkCookies(request):
 			return False
 	else:
 		return False
-
