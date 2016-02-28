@@ -1,5 +1,9 @@
-h1 {
-    align: center;
-    font-size: 32px;
+h1, p {
+    text-align: center;
 }
 
+#errorstring {
+  text-align: center;
+  font-size: 32px;
+  color: red;
+}
