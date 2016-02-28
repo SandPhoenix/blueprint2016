@@ -9,7 +9,8 @@
 <body>
   <p>submit an update:</p>
   <form action="{% url 'main:submitpost' %}" method="post">
-    <textarea name="content" cols="80" rows="24"></textarea>
+    {% csrf_token %}
+    <textarea name="content" cols="80" rows="10"></textarea>
     <br/>
     <input type="submit">
   </form>
