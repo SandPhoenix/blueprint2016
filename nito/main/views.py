@@ -28,7 +28,7 @@ def login(request):
 			if u.hash_name == hash_name:
 				response = HttpResponseRedirect(reverse('blog:index'))
 				response.set_cookie('login',request.POST['login'])
-				return render(request,'main/index.html',{})
+				return submitpost(request)
 		else:
 			return render(request,'main/index.html',{})
 	else:
@@ -52,7 +52,7 @@ def submitpost(request):
 			post.author = u
 			post.save()
 			return render(request,'main/randompost.html',context)
-	
+
 
 
 
