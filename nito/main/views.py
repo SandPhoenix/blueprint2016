@@ -22,17 +22,17 @@ def signup(request):
         return randompost(request)
 
 def login(request):
-    if request.POST.has_key('login'):
-        hash_name = hashlib.sha512(request.POST['login']).hexdigest()
-        for u in User.objects.all():
-            if u.hash_name == hash_name:
-                response = HttpResponseRedirect(reverse('blog:index'))
-                response.set_cookie('login',request.POST['login'])
-                return render(request,'main/index.html',{})
-        else:
-            return render(request,'main/index.html',{})
-    else:
-        return render(request,'main/index.html',{})
+	if request.POST.has_key('login'):
+		hash_name = hashlib.sha512(request.POST['login']).hexdigest()
+		for u in User.objects.all():
+			if u.hash_name == hash_name:
+				response = HttpResponseRedirect(reverse('blog:index'))
+				response.set_cookie('login',request.POST['login'])
+				return submitpost(request)
+		else:
+			return render(request,'main/index.html',{})
+	else:
+		return render(request,'main/index.html',{})
 
 def randompost(request):
     if checkCookies(request) != False:
@@ -44,14 +44,14 @@ def randompost(request):
         return error(request,"Not Authorized")
 
 def submitpost(request):
-    u = checkCookies(request)
-    if u != False:
-        if request.POST.has_key('content'):
-            post = Post()
-            post.setContent(request.POST['content'])
-            post.author = u
-            post.save()
-            return render(request,'main/randompost.html',context)
+	u = checkCookies(request)
+	if u != False:
+		if request.POST.has_key('content'):
+			post = Post()
+			post.setContent(request.POST['content'])
+			post.author = u
+			post.save()
+			return render(request,'main/randompost.html',context)
 
 
 
