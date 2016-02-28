@@ -43,9 +43,16 @@ def randompost(request):
 	else:
 		return error(request,"Not Authorized")
 
-# def submitpost(request):
-# 	u = checkCookies(request)
-# 	if u != False:
+def submitpost(request):
+	u = checkCookies(request)
+	if u != False:
+		if request.POST.has_key('content'):
+			post = Post()
+			post.setContent(request.POST['content'])
+			post.author = u
+			post.save()
+			return render(request,'main/randompost.html',context)
+	
 
 
 
