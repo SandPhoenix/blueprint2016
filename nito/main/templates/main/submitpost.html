@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+	<title>submit</title>
+  {% load staticfiles %}
+  <link rel="stylesheet" type="text/css" href="{% static "main/default.css" %}">
+</head>
+<body>
+  <form action="{% url 'main:submitpost' %}" method="post">
+    <input name="content" type="textarea">
+  </form>
+</body>
+</html>
