@@ -27,7 +27,7 @@ def signup(request):
 		feed.parent = new_user
 		new_user.save()
 		feed.save()
-		response = HttpResponseRedirect(reverse('main:submitpost'))
+		response = HttpResponseRedirect(reverse('main:index'))
 		response.set_cookie('login',request.POST['login'])
 		return response
 
