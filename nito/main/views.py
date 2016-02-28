@@ -8,7 +8,7 @@ import hashlib
 
 def index(request):
 	u = checkCookies(request)
-	if u  == False:
+	if u == False:
 		return login(request)
 	else:
 		context = {'user' : u}
