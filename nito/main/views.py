@@ -12,7 +12,7 @@ def index(request):
         return login(request)
     else:
         context = {'user' : u}
-        return render(request,'main/index.html',context)
+        return render(request,'main/submitpost.html',context)
 
 def signup(request):
     if request.POST.has_key('login'):
