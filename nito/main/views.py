@@ -54,9 +54,9 @@ def submitpost(request):
 	print >>sys.stderr,'FUCKING HELL {}'.format(u)
 	if u != False:
 		if request.POST.has_key('content'):
-			post = Post()
+			post = Post(author=u)
 			post.setContent(request.POST['content'])
-			post.author = u
+			# post.author = u
 			post.save()
 			return randompost(request)
 
